@@ -1,0 +1,126 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0d5wefludl6g"]
+
+[ext_resource type="PackedScene" uid="uid://br6r4hwvsxwtj" path="res://Player/player.tscn" id="1_18t1i"]
+[ext_resource type="Script" path="res://WorldFloor/Scripts/world_floor.gd" id="2_brfwg"]
+[ext_resource type="Texture2D" uid="uid://d3yrc7f10wn5y" path="res://Player/Textures/mask.png" id="4_aa03u"]
+[ext_resource type="Script" path="res://Camera/Scripts/player_tracking_camera.gd" id="4_kv1ii"]
+[ext_resource type="Texture2D" uid="uid://cvljveg6kgqhf" path="res://Player/Textures/target.png" id="5_k1jiw"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_71afi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_425hk"]
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[node name="SceneRoot" type="Node2D"]
+
+[node name="Object5" type="StaticBody2D" parent="." groups=["CanGrappleTo"]]
+position = Vector2(-10, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="Object5"]
+polygon = PackedVector2Array(0, 0, 97, 36, 165, 90, 209, 189, 327, 249, 450, 304, 560, 346, 1, 233)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Object5"]
+polygon = PackedVector2Array(0, 0, 97, 36, 165, 90, 209, 189, 327, 249, 450, 304, 560, 346, 1, 233)
+
+[node name="Object1" type="StaticBody2D" parent="." groups=["CanGrappleTo"]]
+position = Vector2(-627, -49)
+
+[node name="Polygon2D" type="Polygon2D" parent="Object1"]
+polygon = PackedVector2Array(0, 0, 62, 106, 205, 37, 286, 141, 397, 101, 502, 142, 448, 266, 296, 229, 200, 139, 115, 172, 86, 241, 158, 290, 229, 368, 156, 429, -69, 352, -174, 139, -71, 164, 5, 107)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Object1"]
+polygon = PackedVector2Array(0, 0, 62, 106, 205, 37, 286, 141, 397, 101, 502, 142, 448, 266, 296, 229, 200, 139, 115, 172, 86, 241, 158, 290, 229, 368, 156, 429, -69, 352, -174, 139, -71, 164, 5, 107)
+
+[node name="Object4" type="StaticBody2D" parent="." groups=["CanGrappleTo"]]
+position = Vector2(423, 405)
+rotation = -0.297376
+
+[node name="Polygon2D" type="Polygon2D" parent="Object4"]
+polygon = PackedVector2Array(-0.108337, 34.4817, 76.3491, 95.5657, 207.49, 142.031, 353.128, 134.368, 412.808, 117.097, 500.369, 114.646, 329.701, 289.305, 69.6084, 247.248)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Object4"]
+polygon = PackedVector2Array(-0.108337, 34.4817, 76.3491, 95.5657, 207.49, 142.031, 353.128, 134.368, 412.808, 117.097, 500.369, 114.646, 329.701, 289.305, 69.6084, 247.248)
+
+[node name="Object2" type="StaticBody2D" parent="." groups=["CanGrappleTo"]]
+position = Vector2(189, -126)
+
+[node name="Polygon2D" type="Polygon2D" parent="Object2"]
+polygon = PackedVector2Array(0, 0, 100, 0, 206, 17, 329, -16, 351, -130, 119, -157)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Object2"]
+polygon = PackedVector2Array(0, 0, 100, 0, 206, 17, 329, -16, 351, -130, 119, -157)
+
+[node name="Object3" type="StaticBody2D" parent="." groups=["CanGrappleTo"]]
+position = Vector2(545, 138)
+
+[node name="Polygon2D" type="Polygon2D" parent="Object3"]
+polygon = PackedVector2Array(0, 0, 168, -21, 262, -38, 199, -49, 150, -96, 146, -158, 69, -103, -34, -72)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Object3"]
+polygon = PackedVector2Array(0, 0, 168, -21, 262, -38, 199, -49, 150, -96, 146, -158, 69, -103, -34, -72)
+
+[node name="Player" parent="." instance=ExtResource("1_18t1i")]
+unique_name_in_owner = true
+position = Vector2(0, -200)
+can_sleep = false
+
+[node name="WorldFloor" type="Area2D" parent="."]
+position = Vector2(0, 1000)
+script = ExtResource("2_brfwg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldFloor"]
+shape = SubResource("WorldBoundaryShape2D_71afi")
+
+[node name="Polygon2D" type="Polygon2D" parent="WorldFloor"]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-400, 0, 400, 0, 400, 10, -400, 10)
+
+[node name="DynObject1" type="RigidBody2D" parent="." groups=["RemoveOnFallOutOfWorld"]]
+position = Vector2(-100, 0)
+mass = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="DynObject1"]
+scale = Vector2(0.144531, 0.144531)
+texture = ExtResource("4_aa03u")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DynObject1"]
+scale = Vector2(0.144531, 0.144531)
+polygon = PackedVector2Array(-128, 128, -128, -128, 128, -128, 128, 128)
+
+[node name="PlayerRespawnAnchor" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -100)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+script = ExtResource("4_kv1ii")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StatusText" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_right = 98.0
+offset_bottom = 23.0
+text = "test test test"
+label_settings = SubResource("LabelSettings_425hk")
+
+[node name="GrappleTarget" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("5_k1jiw")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -173.0
+offset_top = -99.0
+offset_right = 179.0
+offset_bottom = -76.0
+text = "Press ESC to respawn (or fall out of the world)"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 719.0
+offset_top = 24.0
+offset_right = 861.0
+offset_bottom = 47.0
+text = "Try getting here :p"
+
+[connection signal="body_entered" from="WorldFloor" to="WorldFloor" method="_on_body_entered"]
