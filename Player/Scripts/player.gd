@@ -28,21 +28,28 @@ func set_grapple_target( value ):
 		self.grappleTargetValid = true;
 		self.grappleTarget = value;
 		%GrappleTarget.global_position = value;
+		#%GrapplePath.points[0] = self.global_position;
+		%GrapplePath.points[1] = value;
 		%GrappleTarget.show();
+		%GrapplePath.show();
 	else:
 		self.grappleTargetValid = false;
 		%GrappleTarget.hide();
+		%GrapplePath.hide();
 
 
 func handle_movement():
 	# Remember target point (just once)
 	if Input.is_action_just_pressed( "grapple" ):
-		var queryParams = PhysicsPointQueryParameters2D.new();
-		queryParams.position = get_global_mouse_position();
+		#var queryParams = PhysicsPointQueryParameters2D.new();
+		var queryParams = PhysicsRayQueryParameters2D.create( self.global_position, get_global_mouse_position() );
+		queryParams.exclude = [self];
+		#queryParams.position = get_global_mouse_position();
 		
-		if get_world_2d().direct_space_state.intersect_point( queryParams ).size() > 0:
+		var result = get_world_2d().direct_space_state.intersect_ray( queryParams );
+		if result.position != null:
 			# Clicked within a valid object, target is valid
-			set_grapple_target( queryParams.position );
+			set_grapple_target( result.position );
 		else:
 			# Invalid click, clear target
 			self.set_grapple_target( null );
@@ -53,7 +60,9 @@ func handle_movement():
 			var force = (self.grappleTarget - self.global_position).normalized() * grappleStrength;
 			%StatusText.text = str( force );
 			self.apply_central_force( force );
+			%GrapplePath.points[0] = self.global_position;
 	else:
+		%GrapplePath.hide();
 		%StatusText.text = "";
 
 
