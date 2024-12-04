@@ -4,14 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://d13iuvg56hqt3" path="res://Player/Textures/player.svg" id="2_ifi2j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_123st"]
-radius = 38.0
+radius = 30.0
 
 [node name="Player" type="RigidBody2D" groups=["Player"]]
-position = Vector2(0, -80)
 script = ExtResource("1_ru1kx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.158, 0.158)
 texture = ExtResource("2_ifi2j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

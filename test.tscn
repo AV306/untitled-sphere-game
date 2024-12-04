@@ -62,7 +62,7 @@ polygon = PackedVector2Array(0, 0, 168, -21, 262, -38, 199, -49, 150, -96, 146, 
 
 [node name="Player" parent="." instance=ExtResource("1_18t1i")]
 unique_name_in_owner = true
-position = Vector2(8, -592)
+position = Vector2(0, -200)
 can_sleep = false
 
 [node name="WorldFloor" type="Area2D" parent="."]
@@ -108,5 +108,19 @@ label_settings = SubResource("LabelSettings_425hk")
 [node name="GrappleTarget" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture = ExtResource("5_k1jiw")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -173.0
+offset_top = -99.0
+offset_right = 179.0
+offset_bottom = -76.0
+text = "Press ESC to respawn (or fall out of the world)"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 719.0
+offset_top = 24.0
+offset_right = 861.0
+offset_bottom = 47.0
+text = "Try getting here :p"
 
 [connection signal="body_entered" from="WorldFloor" to="WorldFloor" method="_on_body_entered"]

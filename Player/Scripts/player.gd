@@ -4,7 +4,7 @@ var shouldRespawn = false;
 
 var grappleTargetValid: bool = false;
 var grappleTarget: Vector2 = Vector2.ZERO;
-var grappleStrength = 2000;
+@export var grappleStrength = 2000; # 2000 pxN seems about right (gravity is 980 px/s^2 -> 980 pxN/kg) (pxN is N but with pixels)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,9 +15,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+
 func _physics_process( delta: float ) -> void:
-	print( self.global_position );
+	if Input.is_key_pressed( KEY_ESCAPE ):
+		self.respawn();
+	#print( self.global_position );
 	handle_movement();
+
 
 func set_grapple_target( value ):
 	if value != null:
@@ -28,6 +32,7 @@ func set_grapple_target( value ):
 	else:
 		self.grappleTargetValid = false;
 		%GrappleTarget.hide();
+
 
 func handle_movement():
 	# Remember target point (just once)
@@ -59,6 +64,7 @@ func _integrate_forces( state: PhysicsDirectBodyState2D ) -> void:
 		state.transform = Transform2D( %PlayerRespawnAnchor.transform );
 		state.linear_velocity = Vector2.ZERO;
 		self.shouldRespawn = false;
+
 
 # Request a respawn of the player
 func respawn():

@@ -15,6 +15,10 @@ run/main_scene="res://test.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[dotnet]
+
+project/assembly_name="untitled-sphere-game"
+
 [global_group]
 
 RemoveOnFallOutOfWorld="Objects that should be removed after falling out of the world"
@@ -33,3 +37,4 @@ grapple={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
