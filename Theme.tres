@@ -1,0 +1,5 @@
+[gd_resource type="Theme" format=3 uid="uid://dn4ytcmxfhcxw"]
+
+[resource]
+default_font_size = 20
+/font_sizes/Normal = 20

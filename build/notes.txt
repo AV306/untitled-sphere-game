@@ -1,3 +1,0 @@
-Collision Layers
-
-1 - player + stuff player can collide with

@@ -15,6 +15,10 @@ run/main_scene="res://test.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="untitled-sphere-game"
@@ -24,6 +28,10 @@ project/assembly_name="untitled-sphere-game"
 RemoveOnFallOutOfWorld="Objects that should be removed after falling out of the world"
 Player=""
 CanGrappleTo=""
+
+[gui]
+
+theme/custom="res://Theme.tres"
 
 [input]
 

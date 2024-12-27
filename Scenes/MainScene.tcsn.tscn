@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwkrgvvra43un"]
+
+[ext_resource type="Script" path="res://GlobalScripts/SubSceneManager.gd" id="1_mvqd6"]
+[ext_resource type="Texture2D" uid="uid://b47q8ofrgi26a" path="res://Menu/Assets/test_background.png" id="2_imhww"]
+[ext_resource type="Theme" uid="uid://dn4ytcmxfhcxw" path="res://Theme.tres" id="4_glff5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gt7f4"]
+font_size = 64
+
+[node name="SceneRoot" type="Node2D"]
+script = ExtResource("1_mvqd6")
+
+[node name="LevelParent" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="IntroBackground" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_imhww")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MenuItems" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 51.0
+offset_top = 218.0
+offset_right = 51.0
+offset_bottom = 218.0
+
+[node name="Label" type="Label" parent="CanvasLayer/MenuItems"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Untitled Sphere Game"
+label_settings = SubResource("LabelSettings_gt7f4")
+
+[node name="MenuButtons" type="Control" parent="CanvasLayer/MenuItems"]
+anchors_preset = 0
+offset_top = 178.0
+offset_right = 40.0
+offset_bottom = 218.0
+
+[node name="NewGameButton" type="Button" parent="CanvasLayer/MenuItems/MenuButtons"]
+layout_mode = 0
+offset_right = 93.0
+offset_bottom = 31.0
+theme = ExtResource("4_glff5")
+text = "New Game"
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/MenuItems/MenuButtons"]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 70.0
+offset_bottom = 71.0
+theme = ExtResource("4_glff5")
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/MenuItems/MenuButtons"]
+layout_mode = 0
+offset_top = 80.0
+offset_right = 42.0
+offset_bottom = 111.0
+theme = ExtResource("4_glff5")
+text = "Quit"
