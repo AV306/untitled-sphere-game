@@ -47,7 +47,7 @@ func handle_movement():
 		#queryParams.position = get_global_mouse_position();
 		
 		var result = get_world_2d().direct_space_state.intersect_ray( queryParams );
-		if result.position != null:
+		if result.has( "position" ):
 			# Clicked within a valid object, target is valid
 			set_grapple_target( result.position );
 		else:
