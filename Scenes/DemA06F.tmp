@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm1uvo32v1kd5"]
+
+[ext_resource type="PackedScene" uid="uid://cct5xn58hf5mj" path="res://StaticObject/StaticObject.tscn" id="1_6a7pj"]
+[ext_resource type="Texture2D" uid="uid://d3yrc7f10wn5y" path="res://Player/Textures/mask.png" id="1_x4fba"]
+[ext_resource type="Script" path="res://Scenes/DynObject.gd" id="2_4lec2"]
+[ext_resource type="Texture2D" uid="uid://bwltaavfb1epv" path="res://Player/PlayerCanvasTexture.tres" id="3_qsk4u"]
+[ext_resource type="PackedScene" uid="uid://br6r4hwvsxwtj" path="res://Player/player.tscn" id="5_osr5s"]
+
+[node name="SceneRoot" type="Node2D"]
+
+[node name="StaticObject" parent="." instance=ExtResource("1_6a7pj")]
+
+[node name="DynObject" type="RigidBody2D" parent="." groups=["RemoveOnFallOutOfWorld"]]
+position = Vector2(-100, 0)
+mass = 5.0
+script = ExtResource("2_4lec2")
+canvas_texture_resource = ExtResource("3_qsk4u")
+
+[node name="Sprite2D" type="Sprite2D" parent="DynObject"]
+scale = Vector2(0.144531, 0.144531)
+texture = ExtResource("1_x4fba")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DynObject"]
+scale = Vector2(0.144531, 0.144531)
+polygon = PackedVector2Array(-128, 128, -128, -128, 128, -128, 128, 128)
+
+[node name="Player" parent="." instance=ExtResource("5_osr5s")]

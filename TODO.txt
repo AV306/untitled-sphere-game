@@ -1,0 +1,6 @@
+TODO:
+
+- add the rest of the dynamic objects (spike, moving platform, blocks)
+- write level load manager
+- define level file format
+- design main level...

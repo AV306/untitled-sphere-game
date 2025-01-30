@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwkrgvvra43un"]
+[gd_scene load_steps=6 format=3 uid="uid://cwkrgvvra43un"]
 
 [ext_resource type="Script" path="res://GlobalScripts/SubSceneManager.gd" id="1_mvqd6"]
 [ext_resource type="Texture2D" uid="uid://b47q8ofrgi26a" path="res://Menu/Assets/test_background.png" id="2_imhww"]
 [ext_resource type="Theme" uid="uid://dn4ytcmxfhcxw" path="res://Theme.tres" id="4_glff5"]
+[ext_resource type="Script" path="res://Scenes/NewGameButton.gd" id="4_tps7c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gt7f4"]
 font_size = 64
@@ -48,6 +49,7 @@ offset_right = 93.0
 offset_bottom = 31.0
 theme = ExtResource("4_glff5")
 text = "New Game"
+script = ExtResource("4_tps7c")
 
 [node name="OptionsButton" type="Button" parent="CanvasLayer/MenuItems/MenuButtons"]
 layout_mode = 0
@@ -64,3 +66,5 @@ offset_right = 42.0
 offset_bottom = 111.0
 theme = ExtResource("4_glff5")
 text = "Quit"
+
+[connection signal="pressed" from="CanvasLayer/MenuItems/MenuButtons/NewGameButton" to="CanvasLayer/MenuItems/MenuButtons/NewGameButton" method="_on_pressed"]

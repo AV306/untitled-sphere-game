@@ -104,6 +104,7 @@ offset_right = 98.0
 offset_bottom = 23.0
 text = "test test test"
 label_settings = SubResource("LabelSettings_425hk")
+metadata/_edit_use_anchors_ = true
 
 [node name="GrapplePath" type="Line2D" parent="."]
 unique_name_in_owner = true
