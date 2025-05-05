@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7cufeasfkx1n"]
+
+[ext_resource type="Script" path="res://WorldFloor/Scripts/world_floor.gd" id="1_a7vku"]
+[ext_resource type="Texture2D" uid="uid://cvljveg6kgqhf" path="res://Player/Textures/target.png" id="2_gco0f"]
+[ext_resource type="PackedScene" uid="uid://br6r4hwvsxwtj" path="res://Player/player.tscn" id="3_h1gsu"]
+[ext_resource type="PackedScene" uid="uid://er3e04jnccbh" path="res://Camera/PlayerTrackingCamera.tscn" id="4_jt35k"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n66pt"]
+
+[node name="SceneRoot" type="Node2D"]
+
+[node name="WorldFloor" type="Area2D" parent="."]
+position = Vector2(0, 1000)
+script = ExtResource("1_a7vku")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldFloor"]
+shape = SubResource("WorldBoundaryShape2D_n66pt")
+
+[node name="Polygon2D" type="Polygon2D" parent="WorldFloor"]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-400, 0, 400, 0, 400, 10, -400, 10)
+
+[node name="PlayerRespawnAnchor" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -100)
+
+[node name="GrapplePath" type="Line2D" parent="."]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 0, 0, 0)
+width = 4.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="GrappleTarget" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_gco0f")
+
+[node name="Player" parent="." instance=ExtResource("3_h1gsu")]
+unique_name_in_owner = true
+
+[node name="Camera2D" parent="." instance=ExtResource("4_jt35k")]
+
+[connection signal="body_entered" from="WorldFloor" to="WorldFloor" method="_on_body_entered"]

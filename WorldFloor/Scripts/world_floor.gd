@@ -19,4 +19,4 @@ func _on_body_entered( body: Node2D ) -> void:
 													# Ok, apparently there exists this feature called "access as unique name",
 													# but somehow I can't apply it to the root node. :(
 	elif body.is_in_group( "Player" ):
-		$"/root/SceneRoot/Player".respawn();
+		%Player.respawn();

@@ -58,12 +58,12 @@ func handle_movement():
 	if Input.is_action_pressed( "grapple" ):
 		if grappleTargetValid:
 			var force = (self.grappleTarget - self.global_position).normalized() * grappleStrength;
-			%StatusText.text = str( force );
+			#%StatusText.text = str( force );
 			self.apply_central_force( force );
 			%GrapplePath.points[0] = self.global_position;
 	else:
 		%GrapplePath.hide();
-		%StatusText.text = "";
+		#%StatusText.text = "";
 
 
 # Additional stuff to handle every physics tick
@@ -78,5 +78,5 @@ func _integrate_forces( state: PhysicsDirectBodyState2D ) -> void:
 # Request a respawn of the player
 func respawn():
 	#print( "Requested player respawn" );
-	%StatusText.text = "Player respawning...";
+	#%StatusText.text = "Player respawning...";
 	self.shouldRespawn = true;

@@ -8,6 +8,5 @@ script = ExtResource("1_q47sc")
 polygon = PackedVector2Array(0, 0, 97, 36, 165, 90, 209, 189, 327, 249, 450, 304, 560, 346, 1, 233)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(0, 0, 97, 36, 165, 90, 209, 189, 327, 249, 450, 304, 560, 346, 1, 233)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
